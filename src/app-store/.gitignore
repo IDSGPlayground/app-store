@@ -1,0 +1,3 @@
+*.pyc
+app-store.db
+app_store.egg-info/
