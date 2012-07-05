@@ -460,6 +460,8 @@ h6 small {
 }
 
 h1 {
+  font-family: 'Oswald', sans-serif;
+  font-variant: small-caps;
   font-size: 30px;
   line-height: 36px;
 }
