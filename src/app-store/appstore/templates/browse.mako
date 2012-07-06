@@ -4,8 +4,7 @@
 <head>
     <title>BearApps</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${request.static_url('static:css/bootstrap.css')}" />
-    <link rel="stylesheet" type="text/css" href="" />
+    <link rel="stylesheet" href="/static/bootstrap.css">
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
      <style type="text/css">
 body {
