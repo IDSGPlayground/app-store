@@ -1,34 +1,57 @@
-from pyramid.response import Response
-from pyramid.view import view_config
+import re
+from docutils.core import publish_parts
 
-from sqlalchemy.exc import DBAPIError
+from pyramid.httpexceptions import (
+    HTTPFound,
+    HTTPNotFound,
+    )
+from pyramid.view import view_config
 
 from .models import (
     DBSession,
-    MyModel,
+    Page,
     )
 
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
-def my_view(request):
-    try:
-        one = DBSession.query(MyModel).filter(MyModel.name=='one').first()
-    except DBAPIError:
-        return Response(conn_err_msg, content_type='text/plain', status_int=500)
-    return {'one':one, 'project':'app-store'}
+# regular expression used to find WikiWords
+#wikiwords = re.compile(r"\b([A-Z]\w+[A-Z]+\w+)")
 
-conn_err_msg = """\
-Pyramid is having a problem using your SQL database.  The problem
-might be caused by one of the following things:
+# @view_config(route_name='view_wiki')
+# def view_wiki(request):
+#     return HTTPFound(location = request.route_url('view_page',
+#                                                   pagename='FrontPage'))
 
-1.  You may need to run the "initialize_app-store_db" script
-    to initialize your database tables.  Check your virtual 
-    environment's "bin" directory for this script and try to run it.
+@view_config(route_name='browse', renderer='browse.mako')
+def view_page(request):
 
-2.  Your database server may not be running.  Check that the
-    database server referred to by the "sqlalchemy.url" setting in
-    your "development.ini" file is running.
+    #page = DBSession.query(Page).filter_by(name=pagename).first()
 
-After you fix the problem, please restart the Pyramid application to
-try it again.
-"""
 
+    #return dict(page=page, content=content, edit_url=edit_url)
+    return {}
+
+# @view_config(route_name='add_page', renderer='templates/edit.pt')
+# def add_page(request):
+#     name = request.matchdict['pagename']
+#     if 'form.submitted' in request.params:
+#         body = request.params['body']
+#         page = Page(name, body)
+#         DBSession.add(page)
+#         return HTTPFound(location = request.route_url('view_page',
+#                                                       pagename=name))
+#     save_url = request.route_url('add_page', pagename=name)
+#     page = Page('', '')
+#     return dict(page=page, save_url=save_url)
+
+# @view_config(route_name='edit_page', renderer='templates/edit.pt')
+# def edit_page(request):
+#     name = request.matchdict['pagename']
+#     page = DBSession.query(Page).filter_by(name=name).one()
+#     if 'form.submitted' in request.params:
+#         page.data = request.params['body']
+#         DBSession.add(page)
+#         return HTTPFound(location = request.route_url('view_page',
+#                                                       pagename=name))
+#     return dict(
+#         page=page,
+#         save_url = request.route_url('edit_page', pagename=name),
+#         )
