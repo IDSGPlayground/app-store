@@ -45,20 +45,20 @@
 			</div>
 
 			<div class="btn-group pull-right">
-				<div class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 					<i class="icon-user"></i>
 					Username
 					<span class="caret"></span>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#">Edit Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="#">Sign Out</a>
-						</li>
-					</ul>
-				</div>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="#">Edit Settings</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="#">Sign Out</a>
+					</li>
+				</ul>
 			</div>
 
 			<div class="btn-group pull-right">
@@ -87,13 +87,22 @@
 			<div class="well hero-unit">
 				<div class="row-fluid">
 					<div class="span3">
-						<img src="img/matlab-icon.png" />
-						<h3>MatLab</h3>
+						<a href="#matlab" data-toggle="modal" class="app-btn"><h3>MatLab</h3></a>
 					<div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="modal hide" id="matlab">
+	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal">×</button>
+    	<h3><img src="img/matlab-icon-small.png" /> MatLab</h3>
+  	</div>
+  	<div class="modal-body">
+    	<p>Description here</p>
+  	</div>
 </div>
 
 </body>
